@@ -6,6 +6,6 @@ import com.example.jetpackcomposewithretrofitandroom.roomDb.ToDoDao
 import com.example.jetpackcomposewithretrofitandroom.roomDb.ToDoEntity
 
 @Database(entities = [ToDoEntity::class], version = 1)
-abstract class appDb: RoomDatabase(){
+abstract class AppDb: RoomDatabase(){
     abstract fun toDoDao(): ToDoDao
 }

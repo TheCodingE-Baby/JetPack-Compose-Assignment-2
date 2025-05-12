@@ -1,5 +1,6 @@
 package com.example.jetpackcomposewithretrofitandroom.ui.theme
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -27,7 +28,6 @@ fun TodoListScreen(viewModel: ToDoViewModel, navController: NavController) {
             )
         }
     }
-}
 
 @Composable
 fun TodoItem(todo: ToDoModel, onClick: () -> Unit) {
@@ -50,4 +50,5 @@ fun TodoItem(todo: ToDoModel, onClick: () -> Unit) {
             overflow = TextOverflow.Ellipsis
         )
     }
+}
 }
