@@ -12,10 +12,10 @@ fun TodoApp() {
     val navController = rememberNavController()
 
     NavHost(navController, startDestination = "list") {
-        composable("list") {
+        @Composable("list") {
             TodoListScreen(viewModel(), navController)
         }
-        composable("details/{todoId}") { backStackEntry ->
+       @Composable("details/{todoId}") { backStackEntry ->
             ToDoDetails(backStackEntry.arguments?.getString("todoId")?.toInt() ?: 0)
         }
     }
