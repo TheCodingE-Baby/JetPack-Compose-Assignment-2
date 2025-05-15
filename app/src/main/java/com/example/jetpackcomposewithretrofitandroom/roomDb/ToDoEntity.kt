@@ -13,9 +13,8 @@ data class ToDoEntity(
     @PrimaryKey val toDoId: Int,
     val toDoName: String,
     val isDone: Boolean
-) {
+)
 
-}
 @Dao
 interface ToDoDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
