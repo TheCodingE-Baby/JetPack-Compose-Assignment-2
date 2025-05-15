@@ -18,7 +18,7 @@ data class ToDoEntity(
 @Dao
 interface ToDoDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTodos(todos: List<ToDoEntity>)
+    suspend fun insertTodos(todos: List<Unit>)
 
     @Query("SELECT * FROM todos")
     fun getTodos(): Flow<List<ToDoEntity>>

@@ -14,7 +14,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcomposewithretrofitandroom.data.ToDoModel
 import com.example.jetpackcomposewithretrofitandroom.viewmodel.ToDoViewModel
 
