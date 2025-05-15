@@ -3,6 +3,7 @@ package com.example.jetpackcomposewithretrofitandroom.ui.theme
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -23,11 +24,12 @@ fun TodoListScreen(viewModel: ToDoViewModel, navController: NavController) {
     LazyColumn(modifier = Modifier.padding(16.dp)) {
         items(todos) { todo ->
             TodoItem(
-                todo = todos,
+                todo = todo,
                 onClick = { navController.navigate("details/${todo.toDoId}") }
             )
         }
     }
+}
 
 @Composable
 fun TodoItem(todo: ToDoModel, onClick: () -> Unit) {
@@ -50,5 +52,4 @@ fun TodoItem(todo: ToDoModel, onClick: () -> Unit) {
             overflow = TextOverflow.Ellipsis
         )
     }
-}
 }
