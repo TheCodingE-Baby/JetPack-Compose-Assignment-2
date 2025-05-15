@@ -1,4 +1,4 @@
-package com.example.jetpackcomposewithretrofitandroom
+package com.example.jetpackcomposeassignment2
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jetpackcomposewithretrofitandroom.ui.theme.JetpackComposeWithRetrofitAndRoomTheme
+import com.example.jetpackcomposeassignment2.ui.theme.JetpackComposeWithRetrofitAndRoomTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

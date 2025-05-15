@@ -1,4 +1,4 @@
-package com.example.jetpackcomposewithretrofitandroom.retrofitsetup.api
+package com.example.jetpackcomposeassignment2.retrofitsetup.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

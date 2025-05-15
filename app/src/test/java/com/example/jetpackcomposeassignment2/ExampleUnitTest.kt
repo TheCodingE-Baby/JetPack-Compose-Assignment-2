@@ -1,4 +1,4 @@
-package com.example.jetpackcomposewithretrofitandroom
+package com.example.jetpackcomposeassignment2
 
 import org.junit.Test
 

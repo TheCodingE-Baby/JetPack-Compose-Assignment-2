@@ -1,4 +1,4 @@
-package com.example.jetpackcomposewithretrofitandroom.navigation
+package com.example.jetpackcomposeassignment2.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.internal.composableLambda
@@ -6,10 +6,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx. hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHost
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.compose.composable
-import com.example.jetpackcomposewithretrofitandroom.ui.theme.ToDoDetails
-import com.example.jetpackcomposewithretrofitandroom.ui.theme.TodoListScreen
-import com.example.jetpackcomposewithretrofitandroom.viewmodel.ToDoViewModel
+import com.example.jetpackcomposeassignment2.ui.theme.ToDoDetails
+import com.example.jetpackcomposeassignment2.ui.theme.TodoListScreen
+import com.example.jetpackcomposeassignment2.viewmodel.ToDoViewModel
 
 @Composable
 fun NavGraph(){

@@ -1,4 +1,4 @@
-package com.example.jetpackcomposewithretrofitandroom.ui.theme
+package com.example.jetpackcomposeassignment2.ui.theme
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,8 +14,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
-import com.example.jetpackcomposewithretrofitandroom.data.ToDoModel
-import com.example.jetpackcomposewithretrofitandroom.viewmodel.ToDoViewModel
+import com.example.jetpackcomposeassignment2.data.ToDoModel
+import com.example.jetpackcomposeassignment2.viewmodel.ToDoViewModel
 
 @Composable
 fun TodoListScreen(viewModel: ToDoViewModel, navController: NavController) {

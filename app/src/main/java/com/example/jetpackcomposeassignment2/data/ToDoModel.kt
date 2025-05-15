@@ -1,4 +1,4 @@
-package com.example.jetpackcomposewithretrofitandroom.data
+package com.example.jetpackcomposeassignment2.data
 
 data class ToDoModel(
     val toDoId: Int,

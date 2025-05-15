@@ -1,4 +1,4 @@
-package com.example.jetpackcomposewithretrofitandroom.ui.theme
+package com.example.jetpackcomposeassignment2.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,8 +1,8 @@
-package com.example.jetpackcomposewithretrofitandroom.repo
+package com.example.jetpackcomposeassignment2.repo
 
-import com.example.jetpackcomposewithretrofitandroom.data.ToDoModel
-import com.example.jetpackcomposewithretrofitandroom.database.AppDb
-import com.example.jetpackcomposewithretrofitandroom.retrofitsetup.api.ToDoApi
+import com.example.jetpackcomposeassignment2.data.ToDoModel
+import com.example.jetpackcomposeassignment2.database.AppDb
+import com.example.jetpackcomposeassignment2.retrofitsetup.api.ToDoApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map

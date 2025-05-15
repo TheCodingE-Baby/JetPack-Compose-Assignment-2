@@ -1,11 +1,11 @@
-package com.example.jetpackcomposewithretrofitandroom.viewmodel
+package com.example.jetpackcomposeassignment2.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.jetpackcomposewithretrofitandroom.data.ToDoModel
-import com.example.jetpackcomposewithretrofitandroom.repo.TodoRepository
+import com.example.jetpackcomposeassignment2.data.ToDoModel
+import com.example.jetpackcomposeassignment2.repo.TodoRepository
 import kotlinx.coroutines.launch
 
 class ToDoViewModel (repository: TodoRepository): ViewModel(){

@@ -1,4 +1,4 @@
-package com.example.jetpackcomposewithretrofitandroom.roomDb
+package com.example.jetpackcomposeassignment2.roomDb
 
 import androidx.room.Dao
 import androidx.room.Entity
