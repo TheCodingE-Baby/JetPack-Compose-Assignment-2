@@ -1,30 +1,46 @@
 package com.example.jetpackcomposeassignment2.repo
 
+import android.util.Log
 import com.example.jetpackcomposeassignment2.data.ToDoModel
-import com.example.jetpackcomposeassignment2.database.AppDb
 import com.example.jetpackcomposeassignment2.retrofitsetup.api.ToDoApi
+import com.example.jetpackcomposeassignment2.roomDb.ToDoDao
+import com.example.jetpackcomposeassignment2.roomDb.ToDoEntity
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
-class TodoRepository(
+class ToDoRepository(
     private val api: ToDoApi,
-    private val db: AppDb
+    private val dao: ToDoDao
 ) {
-    suspend fun fetchTodos(): List<ToDoModel> {
-        return try {
-            val todos = api.getToDos()
-            db.toDoDao().insertTodos(todos.map { it.toEntity() })
-            todos
-        } catch (e: Exception) {
-            db.toDoDao().getTodos().first().map { it.toTodo() }
-        }
+    suspend fun refreshTodos() {
+           try {
+               val todos = api.getToDos()
+        dao.insertTodos(todos.map { it.toEntity() })
+           } catch(e: Exception){
+               Log.e("Repo", "Refresh failed.", e)
+           }
     }
 
+    fun ToDoModel.toEntity(): ToDoEntity{
+        return ToDoEntity(
+            toDoId = this.toDoId,
+            toDoName = this.toDoName,
+            isDone = this.isDone
+        )
+    }
 
-    fun getTodosFlow(): Flow<List<ToDoModel>> {
-        return db.toDoDao().getTodos().map { entities ->
-            entities.map { it.toTodo() }
+    fun ToDoEntity.toDomain(): ToDoModel{
+        return ToDoModel(
+            toDoId = this.toDoId,
+            userId = 0,
+            toDoName = this.toDoName,
+            isDone = this.isDone
+        )
+    }
+
+    fun getTodos(): Flow<List<ToDoModel>> {
+        return dao.getTodos().map { entities ->
+            entities.map { it.toDomain() }
         }
     }
 }
