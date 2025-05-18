@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
 import androidx.room.Query
-import com.example.jetpackcomposeassignment2.data.ToDoModel
 import kotlinx.coroutines.flow.Flow
 
 @Entity(tableName = "todos")

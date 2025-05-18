@@ -21,7 +21,7 @@ class ToDoRepository(
            }
     }
 
-    fun ToDoModel.toEntity(): ToDoEntity{
+    private fun ToDoModel.toEntity(): ToDoEntity{
         return ToDoEntity(
             toDoId = this.toDoId,
             toDoName = this.toDoName,
@@ -29,7 +29,7 @@ class ToDoRepository(
         )
     }
 
-    fun ToDoEntity.toDomain(): ToDoModel{
+    private fun ToDoEntity.toDomain(): ToDoModel{
         return ToDoModel(
             toDoId = this.toDoId,
             userId = 0,

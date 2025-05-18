@@ -30,20 +30,21 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        topBar = {
-            SmallTopAppBar(
-                title = { Text("To-Do App") }
-            )
-        }
-    ) { innerPadding ->
-        // Navigation host for the app
+    Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
+            ToDoTopBar()
+        }, content = {innerPadding->
         TodoNavHost(
-            navController = navController
-        )
-    }
+                navController = navController
+            )
+        })
 }
+
+@Composable
+fun ToDoTopBar() {
+    Text("To-Do App")
+}
+
+
 
 @Preview(showBackground = true)
 @Composable
