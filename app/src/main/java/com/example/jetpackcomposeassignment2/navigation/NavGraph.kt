@@ -1,12 +1,10 @@
 package com.example.jetpackcomposeassignment2.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.internal.composableLambda
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx. hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHost
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.example.jetpackcomposeassignment2.ui.theme.ToDoDetails
 import com.example.jetpackcomposeassignment2.ui.theme.TodoListScreen
 import com.example.jetpackcomposeassignment2.viewmodel.ToDoViewModel
@@ -25,18 +23,18 @@ fun TodoNavHost(navController: NavHostController) {
         startDestination = NavRoutes.TodoList.route
     ) {
         // List Screen
-        composableLambda(NavRoutes.TodoList.route) {
+        composable(NavRoutes.TodoList.route) {
             val viewModel: ToDoViewModel = hiltViewModel()
             TodoListScreen(
                 viewModel = viewModel,
-                onItemClick = { id ->
-                    navController.navigate(NavRoutes.TodoDetail.createRoute(id))
+                onItemClick = { todo ->
+                    navController.navigate(NavRoutes.TodoDetail.createRoute(todo.id))
                 }
             )
         }
 
         // Detail Screen
-        composableLambda(NavRoutes.TodoDetail.route) { backStackEntry ->
+        composable(NavRoutes.TodoDetail.route) { backStackEntry ->
             val viewModel: ToDoViewModel = hiltViewModel()
             val todoId = backStackEntry.arguments?.getString("id")?.toIntOrNull()
 

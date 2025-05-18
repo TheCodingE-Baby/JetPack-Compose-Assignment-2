@@ -10,7 +10,22 @@ import com.example.jetpackcomposeassignment2.data.ToDoModel
 import com.example.jetpackcomposeassignment2.repo.ToDoRepository
 import com.example.jetpackcomposeassignment2.retrofitsetup.api.RetrofitClient
 import kotlinx.coroutines.launch
+import dagger.hilt.android.lifecycle.HiltViewModel
 
+@Module
+@InstallIn(SingletonComponent::class)
+object AppModule {
+
+    @Provides
+    fun provideToDoRepository(
+        api: ToDoApi,
+        dao: ToDoDao
+    ): ToDoRepository {
+        return ToDoRepository(api, db.toDoDao())
+    }
+}
+
+@HiltViewModel
 class ToDoViewModel(
     private val repo: ToDoRepository
 ): ViewModel() {

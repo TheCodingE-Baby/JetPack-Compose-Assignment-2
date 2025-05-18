@@ -1,31 +1,15 @@
 package com.example.jetpackcomposeassignment2.ui.theme
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.CheckboxDefaults
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -38,7 +22,7 @@ fun TodoListScreen(
     viewModel: ToDoViewModel = viewModel(),
     onItemClick: (ToDoModel) -> Unit
 ) {
-    val state by viewModel.state.collectAsState(initial = emptyList<ToDoState>())
+    val state by viewModel.state.collectAsState(initial = ToDoState.Loading)
 
     when (val currentState = state) {
         is ToDoState.Loading -> {
@@ -69,9 +53,16 @@ fun TodoListScreen(
 }
 
 @Composable
-fun TodoItemCard(todo: ToDoModel, modifier: Modifier = Modifier, onItemClick: (ToDoModel) -> Unit) {
+fun TodoItemCard(
+    todo: ToDoModel,
+    modifier: Modifier = Modifier,
+    onItemClick: (ToDoModel) -> Unit
+) {
     Card(
-        modifier = modifier,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp, horizontal = 8.dp)
+            .clickable { onItemClick(todo) },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant
         )
@@ -80,7 +71,7 @@ fun TodoItemCard(todo: ToDoModel, modifier: Modifier = Modifier, onItemClick: (T
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            verticalAlignment = CenterVertically
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Checkbox(
                 checked = todo.isDone,
@@ -103,4 +94,3 @@ fun TodoItemCard(todo: ToDoModel, modifier: Modifier = Modifier, onItemClick: (T
         }
     }
 }
-

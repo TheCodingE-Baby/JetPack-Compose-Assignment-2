@@ -15,7 +15,7 @@ class ToDoRepository(
     suspend fun refreshTodos() {
            try {
                val todos = api.getToDos()
-        dao.insertTodos(todos.map { it.toEntity() })
+               dao.insertTodos(todos.map { it.toEntity() })
            } catch(e: Exception){
                Log.e("Repo", "Refresh failed.", e)
            }
