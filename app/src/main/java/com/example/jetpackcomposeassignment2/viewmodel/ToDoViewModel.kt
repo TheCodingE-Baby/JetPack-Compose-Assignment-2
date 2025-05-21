@@ -1,4 +1,4 @@
-package com.example.jetpackcomposeassignment2.ui.theme
+package com.example.jetpackcomposeassignment2.viewmodel
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -131,7 +131,6 @@ fun TodoListScreen(
                 }
             }
 
-            else -> {}
         }
     }
 }

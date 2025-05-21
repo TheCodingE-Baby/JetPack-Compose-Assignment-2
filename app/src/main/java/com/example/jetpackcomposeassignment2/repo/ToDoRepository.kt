@@ -5,42 +5,46 @@ import com.example.jetpackcomposeassignment2.data.ToDoModel
 import com.example.jetpackcomposeassignment2.retrofitsetup.api.ToDoApi
 import com.example.jetpackcomposeassignment2.roomDb.ToDoDao
 import com.example.jetpackcomposeassignment2.roomDb.ToDoEntity
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 
 class ToDoRepository(
-    private val api: ToDoApi,
-    private val dao: ToDoDao
+    private val toDoApiService: ToDoApi, // Renamed for clarity
+    private val toDoDao: ToDoDao         // Renamed for clarity
 ) {
-    suspend fun refreshTodos() {
-           try {
-               val todos = api.getToDos()
-               dao.insertTodos(todos.map { it.toEntity() })
-           } catch(e: Exception){
-               Log.e("Repo", "Refresh failed.", e)
-           }
+    /**
+     * Refreshes the local database with todos from the remote API.
+     * @return Result<Unit> indicating success or failure of the operation.
+     */
+    suspend fun refreshTodos(): Result<Unit> {
+        return try {
+            // Ensure toDoApiService.getToDos() is executed on a background thread (e.g., Dispatchers.IO)
+            val remoteTodos = toDoApiService.getToDos()
+            // Ensure toDoDao.insertTodos() is executed on a background thread
+            toDoDao.insertTodos(remoteTodos.map { it.toEntity() })
+            Log.i("ToDoRepository", "Todos refreshed successfully.")
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Log.e("ToDoRepository", "Failed to refresh todos from API.", e)
+            Result.failure(e) // Propagate the exception for the caller to handle
+        }
     }
 
-    private fun ToDoModel.toEntity(): ToDoEntity{
+    private fun ToDoModel.toEntity(): ToDoEntity {
         return ToDoEntity(
             toDoId = this.toDoId,
             toDoName = this.toDoName,
+            userId = this.userId,
             isDone = this.isDone
         )
     }
 
-    private fun ToDoEntity.toDomain(): ToDoModel{
+    private fun ToDoEntity.toDomain(): ToDoModel {
         return ToDoModel(
             toDoId = this.toDoId,
-            userId = 0,
+            // Assuming userId in ToDoModel has a default or is handled elsewhere if not present in ToDoEntity
+            // userId = 0, // If ToDoModel has a default (e.g. userId: Int = 0), this can be omitted.
             toDoName = this.toDoName,
+            userId = this.userId,
             isDone = this.isDone
         )
-    }
-
-    fun getTodos(): Flow<List<ToDoModel>> {
-        return dao.getTodos().map { entities ->
-            entities.map { it.toDomain() }
-        }
     }
 }

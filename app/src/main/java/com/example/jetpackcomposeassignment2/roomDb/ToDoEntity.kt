@@ -12,8 +12,11 @@ import kotlinx.coroutines.flow.Flow
 data class ToDoEntity(
     @PrimaryKey val toDoId: Int,
     val toDoName: String,
+    val userId: Int,
     val isDone: Boolean
-)
+) {
+
+}
 
 @Dao
 interface ToDoDao{
