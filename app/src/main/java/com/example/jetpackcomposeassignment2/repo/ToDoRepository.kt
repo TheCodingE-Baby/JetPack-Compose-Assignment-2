@@ -10,10 +10,7 @@ class ToDoRepository(
     private val toDoApiService: ToDoApi, // Renamed for clarity
     private val toDoDao: ToDoDao         // Renamed for clarity
 ) {
-    /**
-     * Refreshes the local database with todos from the remote API.
-     * @return Result<Unit> indicating success or failure of the operation.
-     */
+
     suspend fun refreshTodos(): Result<Unit> {
         return try {
             // Ensure toDoApiService.getToDos() is executed on a background thread (e.g., Dispatchers.IO)
